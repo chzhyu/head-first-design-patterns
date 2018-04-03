@@ -2,14 +2,12 @@ package observer;
 
 import lombok.Data;
 import observer.display.CurrentConditionAbatractAbstractDisplay;
-import observer.display.AbstractDisplay;
 import observer.display.Display;
 import observer.display.ForecastAbatractAbstractDisplay;
 import observer.display.StatisticsAbatractAbstractDisplay;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.TooManyListenersException;
 
 /**
  * @author chzhyu at 18-4-3 下午10:58
