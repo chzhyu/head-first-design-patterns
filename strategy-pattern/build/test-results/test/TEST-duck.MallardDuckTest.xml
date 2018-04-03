@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="duck.MallardDuckTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-04-02T17:42:56" hostname="chzhyu" time="0.005">
+  <properties/>
+  <testcase name="performQuack" classname="duck.MallardDuckTest" time="0.002"/>
+  <testcase name="performFly" classname="duck.MallardDuckTest" time="0.003"/>
+  <system-out><![CDATA[quack quack quack quack quack
+i am flying with wings
+I'm flying with a rocket
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

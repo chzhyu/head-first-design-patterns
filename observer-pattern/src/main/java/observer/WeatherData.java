@@ -1,18 +1,20 @@
 package observer;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import observer.display.CurrentConditionDisplay;
-import observer.display.ForecastDisplay;
-import observer.display.StatisticsDisplay;
+import observer.display.CurrentConditionAbatractAbstractDisplay;
+import observer.display.AbstractDisplay;
+import observer.display.Display;
+import observer.display.ForecastAbatractAbstractDisplay;
+import observer.display.StatisticsAbatractAbstractDisplay;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TooManyListenersException;
 
 /**
  * @author chzhyu at 18-4-3 下午10:58
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class WeatherData {
     private float temperature;
 
@@ -20,9 +22,25 @@ public class WeatherData {
 
     private float pressure;
 
-    private CurrentConditionDisplay currentConditionDisplay;
-    private StatisticsDisplay statisticsDisplay;
-    private ForecastDisplay forecastDisplay;
+    private Set<Display> displaySet;
+
+    public WeatherData() {
+        this(0f,0f,0f,null);
+    }
+
+    public WeatherData(float temperature, float humidity, float pressure, Set<Display> displaySet) {
+        this.temperature = temperature;
+        this.humidity = humidity;
+        this.pressure = pressure;
+        this.displaySet = new HashSet<>();
+
+        displaySet.add(new CurrentConditionAbatractAbstractDisplay());
+        displaySet.add(new StatisticsAbatractAbstractDisplay());
+        displaySet.add(new ForecastAbatractAbstractDisplay());
+
+        displaySet.addAll(displaySet);
+    }
+
 
 
     public void measurementsChanged(){
@@ -31,12 +49,13 @@ public class WeatherData {
         final float newHumidity = getHumidity();
         final float newPressure = getPressure();
 
-        currentConditionDisplay.update(newTemperature,newHumidity,newPressure);
-        statisticsDisplay.update(newTemperature,newHumidity,newPressure);
-        forecastDisplay.update(newTemperature,newHumidity,newPressure);
+        update(newTemperature, newHumidity, newPressure);
 
     }
 
+    private void update(float newTemperature, float newHumidity, float newPressure) {
+        displaySet.forEach(display -> display.update(temperature,humidity,pressure));
+    }
 
 
 }
