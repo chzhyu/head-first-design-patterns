@@ -1,10 +1,10 @@
 package observer;
 
 import lombok.Data;
-import observer.display.CurrentConditionAbatractAbstractDisplay;
+import observer.display.CurrentConditionDisplay;
 import observer.display.Display;
-import observer.display.ForecastAbatractAbstractDisplay;
-import observer.display.StatisticsAbatractAbstractDisplay;
+import observer.display.ForecastDisplay;
+import observer.display.StatisticsDisplay;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,9 +32,9 @@ public class WeatherData {
         this.pressure = pressure;
         this.displaySet = new HashSet<>();
 
-        displaySet.add(new CurrentConditionAbatractAbstractDisplay());
-        displaySet.add(new StatisticsAbatractAbstractDisplay());
-        displaySet.add(new ForecastAbatractAbstractDisplay());
+        displaySet.add(new CurrentConditionDisplay());
+        displaySet.add(new StatisticsDisplay());
+        displaySet.add(new ForecastDisplay());
 
         displaySet.addAll(displaySet);
     }
