@@ -87,3 +87,12 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+将删除 .idea/modules/
+将删除 observer-pattern/src/main/resources/
+将删除 observer-pattern/src/test/
+将删除 src/
+将删除 strategy-pattern/build/reports/
+将删除 strategy-pattern/build/test-results/
+将删除 strategy-pattern/build/tmp/
+将删除 strategy-pattern/src/main/resources/
+将删除 strategy-pattern/src/test/resources/
