@@ -37,3 +37,18 @@ r
 Bstrategy-pattern/src/main/java/behavior/impl/FlyRocketPowered.java,6/2/6223184edeaaaa13aed71631ae5f13631271ef3e
 e
 5strategy-pattern/src/main/java/duckcall/Duckcall.java,a/8/a8bc2a8b22f9e1620518a8f39155ba686b922e86
+\
+,.idea/inspectionProfiles/Project_Default.xml,4/9/496a238a6afa168dbaf6efd37bb459331589579c
+^
+..idea/markdown-navigator/profiles_settings.xml,c/5/c553a33182a8928cd5760d212e343bd13f573c9b
+S
+#.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
+M
+observer-pattern/build.gradle,8/5/8559456ecd0d4780abe08248b2e2aa2a3aed8a98
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+h
+8observer-pattern/src/main/java/observer/WeatherData.java,b/4/b46d4106fc3685c7b7ccc22ef759bb618abfdf8d
