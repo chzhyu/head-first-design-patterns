@@ -1,12 +1,11 @@
-package observer;
+package observer.buildIn;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import observer.display.CurrentConditionDisplay;
-import observer.display.DisplayElement;
-import observer.display.ForecastDisplay;
-import observer.display.StatisticsDisplay;
+import observer.buildIn.display.CurrentConditionDisplay;
+import observer.buildIn.display.ForecastDisplay;
+import observer.buildIn.display.StatisticsDisplay;
 
 import java.util.Observable;
 

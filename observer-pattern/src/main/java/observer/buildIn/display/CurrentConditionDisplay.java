@@ -1,7 +1,7 @@
-package observer.display;
+package observer.buildIn.display;
 
 import lombok.Data;
-import observer.WeatherData;
+import observer.buildIn.WeatherData;
 
 import java.util.Observable;
 import java.util.Observer;

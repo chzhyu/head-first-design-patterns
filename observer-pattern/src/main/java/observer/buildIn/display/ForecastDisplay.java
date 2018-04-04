@@ -1,4 +1,4 @@
-package observer.display;
+package observer.buildIn.display;
 
 import lombok.Data;
 
@@ -9,7 +9,7 @@ import java.util.Observer;
  * @author chzhyu at 18-4-3 下午11:18
  */
 @Data
-public class StatisticsDisplay implements DisplayElement, Observer {
+public class ForecastDisplay implements DisplayElement, Observer {
     private float temperature;
 
     private float humidity;
@@ -18,10 +18,11 @@ public class StatisticsDisplay implements DisplayElement, Observer {
 
     private Observable observable;
 
-    public StatisticsDisplay(Observable weatherData) {
+    public ForecastDisplay(Observable weatherData) {
         this.observable = weatherData;
         weatherData.addObserver(this);
     }
+
     @Override
     public void update(Observable o, Object arg) {
 
