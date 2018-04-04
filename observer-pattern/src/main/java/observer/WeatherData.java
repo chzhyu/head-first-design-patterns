@@ -2,58 +2,81 @@ package observer;
 
 import lombok.Data;
 import observer.display.CurrentConditionDisplay;
-import observer.display.Display;
-import observer.display.ForecastDisplay;
-import observer.display.StatisticsDisplay;
+import observer.display.HeadIndexDisplay;
+import observer.util.Observer;
+import observer.util.Subject;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author chzhyu at 18-4-3 下午10:58
  */
 @Data
-public class WeatherData {
+public class WeatherData implements Subject {
     private float temperature;
 
     private float humidity;
 
     private float pressure;
 
-    private Set<Display> displaySet;
+    private List<Observer> observers;
 
     public WeatherData() {
-        this(0f,0f,0f,null);
+        this(0f,0f,0f,new ArrayList<>());
     }
 
-    public WeatherData(float temperature, float humidity, float pressure, Set<Display> displaySet) {
+    public WeatherData(float temperature, float humidity, float pressure, List<Observer> displayElementList) {
         this.temperature = temperature;
         this.humidity = humidity;
         this.pressure = pressure;
-        this.displaySet = new HashSet<>();
-
-        displaySet.add(new CurrentConditionDisplay());
-        displaySet.add(new StatisticsDisplay());
-        displaySet.add(new ForecastDisplay());
-
-        displaySet.addAll(displaySet);
+        this.observers = displayElementList;
     }
 
 
 
     public void measurementsChanged(){
         // my code here
-        final float newTemperature = getTemperature();
-        final float newHumidity = getHumidity();
-        final float newPressure = getPressure();
-
-        update(newTemperature, newHumidity, newPressure);
-
+        notifyObservers();
     }
 
-    private void update(float newTemperature, float newHumidity, float newPressure) {
-        displaySet.forEach(display -> display.update(temperature,humidity,pressure));
+    public static void main(String[] args) {
+        WeatherData weatherData = new WeatherData();
+
+        new CurrentConditionDisplay(weatherData);
+
+        new HeadIndexDisplay(weatherData);
+        weatherData.setMeasurements(10,20,30);
+        weatherData.setMeasurements(11,21,31);
+        weatherData.setMeasurements(12,22,32);
     }
 
+    public void setMeasurements(float temperature, float humidity, float pressure){
+        this.temperature = temperature;
+        this.humidity = humidity;
+        this.pressure = pressure;
+        measurementsChanged();
+    }
 
+    @Override
+    public void registerObserver(Observer observer) {
+        if (observer != null && observers != null && !observers.contains(observer)) {
+            observers.add(observer);
+        }
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        if (observer != null && observers != null && !observers.contains(observer)) {
+            int i = observers.indexOf(observer);
+            if (i >= 0) {
+                observers.remove(observer);
+            }
+        }
+    }
+
+    @Override
+    public void notifyObservers() {
+        observers.forEach(observer -> observer.update(temperature,humidity,pressure));
+    }
 }
