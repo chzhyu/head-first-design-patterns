@@ -2,6 +2,7 @@
 ### Gradle template
 .gradle
 /build/
+build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -96,3 +97,8 @@ fabric.properties
 将删除 strategy-pattern/build/tmp/
 将删除 strategy-pattern/src/main/resources/
 将删除 strategy-pattern/src/test/resources/
+将删除 observer-pattern/src/main/java/observer/application/
+将删除 observer-pattern/src/main/java/observer/data/
+将删除 strategy-pattern/build/tmp/compileJava/
+将删除 strategy-pattern/build/tmp/compileTestJava/
+/.idea/
