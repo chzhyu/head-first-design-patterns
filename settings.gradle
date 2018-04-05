@@ -1,4 +1,5 @@
 rootProject.name = 'head-first-design-patterns'
 include 'strategy-pattern'
 include 'observer-pattern'
+include 'decorator-pattern'
 
