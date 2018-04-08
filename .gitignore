@@ -102,3 +102,4 @@ fabric.properties
 将删除 strategy-pattern/build/tmp/compileJava/
 将删除 strategy-pattern/build/tmp/compileTestJava/
 /.idea/
+将删除 decorator-pattern/src/
