@@ -1,24 +1,19 @@
 package pizza;
 
-import pizza.factory.SimplePizzaFactory;
-
 /**
  * @author chzhyu@126.com at 5/9/18 10:06 PM
  */
-public class PizzaShop {
+public abstract class PizzaShop {
 
-    private final SimplePizzaFactory factory;
 
-    public PizzaShop(SimplePizzaFactory factory) {
-        this.factory = factory;
-    }
-
-    public PizzaShop() {
-        factory = new SimplePizzaFactory();
-    }
-
-    public Pizza orderPizza(String type) {
-        Pizza pizza = factory.createPizza(type);
+    /**
+     * the method to order pizza .
+     *
+     * @param type the type of pizza ,
+     * @return the pizza the be eat
+     */
+    public final Pizza orderPizza(String type) {
+        Pizza pizza = createPizza(type);
 
         if (pizza != null) {
             pizza.prepare();
@@ -29,5 +24,13 @@ public class PizzaShop {
 
         return pizza;
     }
+
+    /**
+     * method to create pizza , it should be implement by vary Franchises.
+     *
+     * @param type the type of pizza
+     * @return the cooked pizza ,but still need to be prepared, baked, cut, boxed.
+     */
+    protected abstract Pizza createPizza(String type);
 
 }
