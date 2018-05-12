@@ -1,4 +1,6 @@
-package pizza;
+package pizza.shop;
+
+import pizza.Pizza;
 
 /**
  * @author chzhyu@126.com at 5/9/18 10:06 PM

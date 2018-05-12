@@ -1,0 +1,47 @@
+@startuml
+abstract class PizzaStore{
++ orderPizza(type:String):Pizza
+# abstract createPizza(type:String):Pizza
+}
+note right
+PizzaStore is implemented as a Factory Method
+because we want to be able to create a product
+that varies by region. With the Factory Method,
+each region gets its own concrete factory that
+knows how to make pizzas which ar appropriate for
+the area.
+end note
+
+note left of PizzaStore
+Provide an abstract interface for creating
+one product
+end note
+
+PizzaStore <|-- NYPizzaStore
+class NYPizzaStore{
++ orderPizza(type:String):Pizza
+}
+note left
+Each subclass decides which concrete class
+to instantiate
+end note
+
+class Pizza
+note top
+This is teh product of the PizzaStore.
+Clients only rely on this abstract type
+end note
+
+package nypizza{
+Pizza <|-- NYStyleCheesePizza
+Pizza <|-- NYStylePepperoniPizza
+Pizza <|-- NYStyleClamPizza
+Pizza <|-- NYStyleVeggiePizza
+}
+
+NYPizzaStore <-- nypizza
+note on link #red
+The NYPizzaStore subclass only
+instantiates NY style pizza
+end note
+@enduml

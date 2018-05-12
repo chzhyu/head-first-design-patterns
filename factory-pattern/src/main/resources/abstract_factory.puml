@@ -1,0 +1,39 @@
+@startuml
+interface PizzaIngredientFactory{
+creteDough();
+creteSauce();
+creteCheese();
+creteVeggies();
+cretePepperoni();
+creteClam();
+}
+note left
+Provide an abstract
+interface for creating a
+family of product
+end note
+note right of PizzaIngredientFactory
+PizzaIngredientFactory is implemented as
+an Abstract Factory because we need to create
+families of produces (the ingredients). Each
+subclass implements the ingredients using its own
+regional suppliers.
+end note
+
+PizzaIngredientFactory <|.. ChicagoPizzaIngredientFactory
+
+note as N1
+Each ingredient represents a product that
+is produced by a Factory Method in the Abstract
+Factory (eg: Dough,Clams)
+end note
+
+class ChicagoPizzaIngredientFactory{
+creteDough();
+creteSauce();
+creteCheese();
+creteVeggies();
+cretePepperoni();
+creteClam();
+}
+@enduml

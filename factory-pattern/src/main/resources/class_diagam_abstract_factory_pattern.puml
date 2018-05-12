@@ -1,0 +1,52 @@
+@startuml
+interface AbstractFactory{
+CreateProductA()
+CreateProductB()
+}
+note bottom of AbstractFactory
+The Abstract defines the interface
+that all Concrete factories must
+implement,which consists of a set
+of methods for producing products.
+end note
+
+
+note as N1
+The concrete factories implement the
+different product families. To create
+a product , the client uses one of these
+factories, so it never has to instantiate
+a product object.
+end note
+
+ConcreteFactory1 <--- N1
+ConcreteFactory2 <--- N1
+
+interface AbstractProductA{
+}
+interface AbstractProductB{
+}
+
+AbstractFactory <.u. ConcreteFactory1
+AbstractFactory <.u. ConcreteFactory2
+
+ConcreteFactory1 <-u- ProductA1
+ConcreteFactory1 <-u- ProductB1
+
+ConcreteFactory2 <-u- ProductA2
+ConcreteFactory2 <-u- ProductB2
+
+AbstractProductA <.d. ProductA2
+AbstractProductA <.d. ProductA1
+
+AbstractProductB <.d. ProductB2
+AbstractProductB <.d. ProductB1
+
+class Client{
+}
+
+Client <-- AbstractProductA
+Client <-- AbstractProductB
+Client <-- AbstractFactory
+@enduml
+

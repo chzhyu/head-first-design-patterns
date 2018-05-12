@@ -1,11 +1,6 @@
 package pizza.factory;
 
 import org.junit.Test;
-import pizza.nystyle.NYGreekPizza;
-import pizza.Pizza;
-import pizza.PizzaShop;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author chzhyu@126.com at 5/9/18 11:01 PM

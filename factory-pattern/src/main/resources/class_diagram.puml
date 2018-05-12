@@ -1,0 +1,475 @@
+@startuml
+
+abstract class AbstractList
+abstract AbstractCollection
+interface List
+interface Collection
+
+List <|-- AbstractList
+Collection <|-- AbstractCollection
+
+Collection <|- List
+AbstractCollection <|- AbstractList
+AbstractList <|-- ArrayList
+
+class ArrayList {
+Object[] elementData
+size()
+}
+
+enum TimeUnit {
+DAYS
+HOURS
+MINUTES
+}
+
+@enduml
+
+' 类之间的关系
+@startuml
+class Class01{
+-name
++getName()
+}
+Class01 <|-- Class02
+Class03 *-- Class04
+Class05 o-- Class06
+Class07 .. Class08
+Class09 -- Class10
+@enduml
+
+@startuml
+Class11 <|.. Class12
+Class13 --> Class14
+Class15 ..> Class16
+Class17 ..|> Class18
+Class19 <--* Class20
+@enduml
+
+@startuml
+Class21 #-- Class22
+Class23 x-- Class24
+Class25 }-- Class26
+Class27 +-- Class28
+Class29 ^-- Class30
+
+@enduml
+
+' 标识
+@startuml
+Class01 "1" *-- "many"Class02 : contains
+Class03 o-- Class04:aggregation
+Class05 --> "1" Class06
+@enduml
+@startuml
+class Car
+
+Driver - Car:drivers >
+Car *-- Wheel: have 4 >
+Car -- Person : < owns
+@enduml
+' 声明方法和属性
+@startuml
+' 这是注释
+Object <|-- ArrayList
+Object : equals()
+ArrayList : Object[] elementData
+ArrayList : size()
+@enduml
+
+@startuml
+class Dummy{
+    String data
+    void methods()
+}
+
+class Fight {
+    fightNumber:Integer
+    departureTime:Date
+}
+@enduml
+@startuml
+class Dummy{
+{field} A field (despite parentheses)
+{method} Some method
+}
+@enduml
+' 定义可访问性
+@startuml
+class Dummy{
+-field1
+#field2
+~method()
++method2()
+}
+@enduml
+
+' 抽象与静态
+@startuml
+class Dummy{
+{static} String id
+{abstract} void method
+}
+@enduml
+
+'自定义分割符
+@startuml
+class Foo{
+you can use several lines
+..
+as you want and group
+==
+things together.
+--
+You can have as many groups as you want
+__
+End of class
+}
+
+class User {
+.. Simple Getter ..
++getName()
++getAddress()
+..Some setter..
++setName()
+--private data--
+int age
+--encrypted--
+String password
+}
+@enduml
+
+' 备注与模板
+@startuml
+class Object <<general>>
+Object <|--- ArrayList
+note top of Object : In java, every class\nextends this one;
+note "This is a floating note " as N1
+note "This note is connected\nto several objects" as N2
+Object .. N2
+N2 .. ArrayList
+
+Class Foo
+note left of Foo : On last defined class
+@enduml
+
+' 更多的注释
+@startuml
+class Foo
+note left : On last defined class
+
+note top of Object
+In java, <size:18>every</size> <u>class</u>
+<b>extends</b>
+<i>this</i> one
+end note
+
+note as N1
+This note is <u>also</u>
+<b><color:royalBlue>on several </color>
+<s>words</s> lines
+And this is hosted by <img:http://plantuml.com/>
+end note
+@enduml
+
+' 链接的注释
+@startuml
+class Dummy
+Dummy --> Foo : A link
+note on link #red: note that is red
+
+Dummy --> Foo2 : Another link
+note right on link #blue
+    this is my note on right link
+    and in blue
+end note
+@enduml
+' 抽象类和接口
+@startuml
+abstract class AbstractList
+abstract AbstractCollection
+interface List
+Interface Collection
+
+List <|-- AbstractList
+Collection <|-- AbstractCollection
+
+Collection <|-- List
+AbstractCollection <|-- AbstractList
+AbstractList <|-- ArrayList
+
+class ArrayList{
+~Object[] elementData
+~size()
+}
+
+enum TimeUnit{
+DAYS
+HOURS
+MINUTES
+}
+
+annotation SuppressWarnings
+@enduml
+
+' 使用非字母字符
+@startuml
+class "This is my class" as class1
+class class2 as "It works this way too"
+
+class2 *.. "foo/dummy" : use
+@enduml
+' 隐藏属性,函数等
+@startuml
+class Dummy1{
++myMethods()
+}
+
+class Dummy02{
++hiddenMethod()
+}
+
+class Dummy03<<Serializable>>{
+String name
+}
+
+hide members
+hide <<Serializable>> circle
+
+show Dummy1 methods
+show <<Serializable>> fields
+
+@enduml
+' 隐藏类
+@startuml
+class Foo1
+class Foo2
+
+Foo2 *-- Foo1
+
+hide Foo2
+@enduml
+' 泛型
+@startuml
+class Foo<? extends Element> {
+int size()
+}
+Foo *- Element
+@enduml
+
+' 指定标记(Spot)
+@startuml
+class System << (S,#FF7700) Singleton>>
+class Date <<(D,orchid)>>
+@enduml
+
+' 包
+@startuml
+package "Classic Collections" #DDDDDD{
+Object <|-- ArrayList
+}
+
+package net.sourceforge.plantuml{
+Object <|-- Demo1
+Demo1 *- Demo2
+}
+@enduml
+
+' 包样式
+@startuml
+scale 750 width
+package foo1 <<Node>>{
+class Class1
+}
+package foo2 <<Rectangle>>{
+class Class1
+}
+package foo3 <<Folder>>{
+class Class1
+}
+package foo4 <<Frame>>{
+class Class1
+}
+package foo5 <<Cloud>>{
+class Class1
+}
+package foo6 <<Database>>{
+class Class1
+}
+@enduml
+@startuml
+skinparam packageStyle rectangle
+
+package foo1.foo2{}
+package foo1.foo2.foo3{
+class Object
+}
+
+foo1.foo2 +-- foo1.foo2.foo3
+@enduml
+
+'命名空间(Namespaces)
+@startuml
+class BaseClass
+
+namespace net.dummy #DDDDDD{
+.BaseClass <|-- Person
+Meeting o-- Person
+
+.BaseClass <|-- Meeting
+
+}
+
+namespace net.foo {
+net.dummy.Person <|- Person
+.BaseClass <|-- Person
+
+net.dummy.Meeting o-- Person
+}
+
+BaseClass <|-- net.unused.Person
+@enduml
+
+' 自动创建命名空间
+@startuml
+set namespaceSeparator ::
+class X1::X2::foo{
+some info
+}
+@enduml
+@startuml
+set namespaceSeparator none
+class X1.X2.Foo{
+some info
+}
+@enduml
+
+' 棒棒糖接口
+@startuml
+class foo
+bar ()- foo
+@enduml
+
+' 改变箭头方向
+@startuml
+Room o- Student
+Room *-- Chair
+@enduml
+@startuml
+Student -o Room
+Chari --* Room
+@enduml
+@startuml
+foo -left-> dummyRight
+foo -right-> dummyLeft
+foo -up-> dummyUp
+foo -down-> dummyDown
+@enduml
+@startuml
+foo -l-> dummyLeft
+foo -r-> dummyRigth
+foo -u-> dummyUp
+foo -d-> dummyDown
+@enduml
+
+' 关系 类
+@startuml
+class Student{
+name
+}
+Student "0..*" - "1..*" Course
+(Student,Course) .. Enrollment
+
+class Enrollment{
+drop()
+cancle()
+}
+@enduml
+
+@startuml
+class Student {
+Name
+}
+
+Student "0..*" -- "1..*" Course
+(Student,Course) . Enrollment
+@enduml
+
+' 皮肤参数
+@startuml
+skinparam class {
+    BackgroudColor PaleGreen
+    ArrowColor SeaGreen
+    BorderColor SpringGreen
+}
+
+skinparam stereotypeCBackgroundColor YellowGreen
+
+Class01 "1" *-- "many" Class02: contains
+
+Class03 o-- Class04 :aggregation
+@enduml
+
+' 皮肤原型(Skinned Stereotypes)
+@startuml
+skinparam class {
+    BackgroundColor PaleGreen
+    ArrowColor SeaGreen
+    BorderColor SpringGreen
+    BackgroundColor <<Foo>> Wheat
+    BorderColor <<Foo>> Tomato
+}
+
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBackgroundColor<<Foo>> DimGray
+
+Class01 <<Foo>>
+Class03 <<Foo>>
+
+Class01 "1" *-- "many" Class02 : contains
+
+@enduml
+
+' Help on layout
+@startuml
+class Bar1
+class Bar2
+together {
+  class Together1
+  class Together2
+  class Together3
+}
+Together1 - Together2
+Together2 - Together3
+
+Together2 -[hidden]-> Bar1
+
+Bar1 -[hidden]-> Bar2
+@enduml
+
+' 拆分大文件
+@startuml
+' Split into 4 pages
+page 2x2
+skinparam pageMargin 10
+skinparam pageExternalColor gray
+skinparam pageBorderColor black
+
+class BaseClass
+
+namespace net.dummy #DDDDDD{
+    .BaseClass <|-- Person
+    Meeting o-- Person
+
+    .BaseClass <|- Meeting
+}
+
+namespace net.foo{
+    net.dummy.Person <|- Person
+    .BaseClass <|-- Person
+
+    net.dummy.Meeting o-- Person
+}
+
+BaseClass <|-- net.unused.Person
+@enduml

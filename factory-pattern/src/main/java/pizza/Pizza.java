@@ -3,6 +3,7 @@ package pizza;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pizza.ingredient.*;
 
 import java.util.ArrayList;
 
@@ -13,19 +14,21 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @NoArgsConstructor
 public abstract class Pizza {
-    protected String name, dough, sauce;
-    protected ArrayList toppings = new ArrayList();
+    String name;
+    Dough dough;
+    Sauce sauce;
+    Veggies veggies[];
+    Cheese cheese;
+    Pepperoni pepperoni;
+    Clams clam;
 
-    public void prepare() {
-        System.out.println("Preparing " + name);
-        System.out.println("Tossing dough...");
-        System.out.println("Adding sauce ... ");
-        for (Object topping : toppings) {
-            System.out.println("   " + topping);
-
-        }
-
-    }
+    /**
+     * We should make the prepare method abstract
+     * because this is where we are going to collect the
+     * ingredients needed for the pizza, which of course
+     * will come from the ingredient factory.
+     */
+    public abstract void prepare();
 
     public void bake() {
         System.out.println("Bake for 25 minutes");

@@ -1,0 +1,20 @@
+' 对象的定义
+@startuml
+object firstObject
+object "My Second Object" as 02
+@enduml
+
+' 添加属性
+@startuml
+object user
+
+user : name="Dummy"
+user : id = 123
+@enduml
+
+@startuml
+object user{
+name = "Dummy"
+id = 123
+}
+@enduml
